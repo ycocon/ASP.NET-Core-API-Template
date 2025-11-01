@@ -1,8 +1,16 @@
+using Application.Services;
 using Scalar.AspNetCore;
+using Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+// Add Infrastructure
+builder.Services.AddInfrastructure(builder.Configuration);
+
+// Register Application Services
+builder.Services.AddScoped<CustomerService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
